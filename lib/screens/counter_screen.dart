@@ -41,33 +41,44 @@ class _CounterScreenState extends State<CounterScreen> {
       )),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: 
-      Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-             FloatingActionButton(
-            backgroundColor: const Color.fromARGB(255, 255, 207, 31),
-            foregroundColor: const Color.fromARGB(255, 34, 34, 36),
-            onPressed: () => setState(() => contador-- ),
-             child:const  Icon(Icons.exposure_minus_1),
-            ),
-           
-              FloatingActionButton(
-            backgroundColor: const Color.fromARGB(255, 255, 207, 31),
-            foregroundColor: const Color.fromARGB(255, 34, 34, 36),
-             onPressed: () => setState(() => contador=0 ),
-             child:const  Icon(Icons.restart_alt),
-            ),
-           
-          FloatingActionButton(
-            backgroundColor: const Color.fromARGB(255, 255, 207, 31),
-            foregroundColor: const Color.fromARGB(255, 34, 34, 36),
-            onPressed: () => setState(() => contador++ ),
-             child:const  Icon(Icons.exposure_plus_1),
-            ),
-            
-            
-        ],
-      ),
+      CustomFloatingActionButton(),
       );
 }
+}
+
+class CustomFloatingActionButton extends StatelessWidget {
+  const CustomFloatingActionButton({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+           FloatingActionButton(
+          backgroundColor: const Color.fromARGB(255, 255, 207, 31),
+          foregroundColor: const Color.fromARGB(255, 34, 34, 36),
+          onPressed: null,
+           child:const  Icon(Icons.exposure_minus_1),
+          ),
+         
+            FloatingActionButton(
+          backgroundColor: const Color.fromARGB(255, 255, 207, 31),
+          foregroundColor: const Color.fromARGB(255, 34, 34, 36),
+           onPressed: null,
+           child:const  Icon(Icons.restart_alt),
+          ),
+         
+        FloatingActionButton(
+          backgroundColor: const Color.fromARGB(255, 255, 207, 31),
+          foregroundColor: const Color.fromARGB(255, 34, 34, 36),
+          onPressed: null,
+           child:const  Icon(Icons.exposure_plus_1),
+          ),
+          
+          
+      ],
+    );
+  }
 }

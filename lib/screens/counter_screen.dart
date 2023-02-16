@@ -11,6 +11,19 @@ class CounterScreen extends StatefulWidget {
 
 class _CounterScreenState extends State<CounterScreen> {
   int contador = 0;
+
+  void incrementar(){
+    contador++;
+    setState(() {});
+  }
+  void decrementar(){
+    contador--;
+    setState(() {});
+  }
+  void reiniciar(){
+    contador =0;
+    setState(() {});
+  }
   @override
   Widget build(BuildContext context) {
     
@@ -41,14 +54,22 @@ class _CounterScreenState extends State<CounterScreen> {
       )),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: 
-      CustomFloatingActionButton(),
+      CustomFloatingActionButton(
+        decrementar: decrementar,
+         incrementar: incrementar,
+          reiniciar: reiniciar,
+          ),
       );
 }
 }
 
 class CustomFloatingActionButton extends StatelessWidget {
+  final Function incrementar;
+  final Function decrementar;
+  final Function reiniciar;
+  
   const CustomFloatingActionButton({
-    Key? key,
+    Key? key, required this.incrementar, required this.decrementar, required this.reiniciar,
   }) : super(key: key);
 
   @override
@@ -59,21 +80,21 @@ class CustomFloatingActionButton extends StatelessWidget {
            FloatingActionButton(
           backgroundColor: const Color.fromARGB(255, 255, 207, 31),
           foregroundColor: const Color.fromARGB(255, 34, 34, 36),
-          onPressed: null,
+          onPressed: () => decrementar(),
            child:const  Icon(Icons.exposure_minus_1),
           ),
          
             FloatingActionButton(
           backgroundColor: const Color.fromARGB(255, 255, 207, 31),
           foregroundColor: const Color.fromARGB(255, 34, 34, 36),
-           onPressed: null,
+           onPressed: () => reiniciar(),
            child:const  Icon(Icons.restart_alt),
           ),
          
         FloatingActionButton(
           backgroundColor: const Color.fromARGB(255, 255, 207, 31),
           foregroundColor: const Color.fromARGB(255, 34, 34, 36),
-          onPressed: null,
+          onPressed: ( ) => incrementar(),
            child:const  Icon(Icons.exposure_plus_1),
           ),
           

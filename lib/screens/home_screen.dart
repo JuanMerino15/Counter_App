@@ -8,7 +8,9 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int contador = 0;
+     int a = 0;
+  int b = 0;
+  var resultado;
     const TextStyle estiloTexto= TextStyle(
       fontSize: 30,
       color: Colors.white,
@@ -25,11 +27,11 @@ class HomeScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text(
-            'Número de taps: ',
+            'Resultado de multiplicación',
             style: estiloTexto ,
             ),
           Text(
-            '$contador',
+            '$resultado',
           style: estiloTexto,
           ),
         ],
@@ -40,9 +42,9 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: const Color.fromARGB(255, 255, 207, 31),
         foregroundColor: const Color.fromARGB(255, 34, 34, 36),
         onPressed: () {
-          contador++;
-          print('Presionaste el boton');
-          print(contador);
+          resultado = a * b;
+          print('Multiplicaste: $a por $b');
+          print(resultado);
         },
          child:const  Icon(Icons.add),
         ),

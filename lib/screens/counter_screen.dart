@@ -10,20 +10,43 @@ class CounterScreen extends StatefulWidget {
 }
 
 class _CounterScreenState extends State<CounterScreen> {
-  int contador = 0;
+  int a = 0;
+  int b = 0;
+  var resultado;
 
-  void incrementar(){
-    contador++;
+  void multiplicar(){
+   resultado = a * b;
+    setState(() {});
+   
+  }
+  void incrementara(){
+    a++;
     setState(() {});
   }
-  void decrementar(){
-    contador--;
+  void decrementara(){
+    a--;
     setState(() {});
   }
-  void reiniciar(){
-    contador =0;
+  void reiniciar_a(){
+    a =0;
+    setState(() {});
+
+  }
+  void incrementarb(){
+    b++;
     setState(() {});
   }
+  void decrementarb(){
+    b--;
+    setState(() {});
+  }
+  void reiniciar_b(){
+    b=0;
+    setState(() {});
+    
+  
+  }
+ 
   @override
   Widget build(BuildContext context) {
     
@@ -34,7 +57,7 @@ class _CounterScreenState extends State<CounterScreen> {
     );
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home Screen'),
+        title: const Text('Multiplicador Basico'),
         elevation: 5.5,
       ),
       backgroundColor: Color.fromARGB(255, 98, 224, 93),
@@ -43,33 +66,62 @@ class _CounterScreenState extends State<CounterScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text(
-            'Número de taps: ',
+            'Multipicación ',
             style: estiloTexto ,
             ),
           Text(
-            '$contador',
+            '$a', 
+            
           style: estiloTexto,
           ),
+          Text(
+            'x', 
+            
+          style: estiloTexto,
+          ),
+         Text(
+            '$b', 
+            
+          style: estiloTexto,
+          ),
+           Text(
+            '= $resultado', 
+            
+          style: estiloTexto,
+          ),
+      
+      
         ],
+       
       )),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: 
       CustomFloatingActionButton(
-        decrementar: decrementar,
-         incrementar: incrementar,
-          reiniciar: reiniciar,
+        
+         multiplicar: multiplicar,
+         decrementara: decrementara,
+         incrementara: incrementara,
+         reiniciar_a:   reiniciar_a,
+         decrementarab: decrementarb,
+         incrementarb: incrementarb,
+         reiniciar_b: reiniciar_b,
+         
           ),
       );
 }
 }
 
 class CustomFloatingActionButton extends StatelessWidget {
-  final Function incrementar;
-  final Function decrementar;
-  final Function reiniciar;
-  
+  final Function multiplicar;
+  final Function decrementara;
+  final Function incrementara;
+  final Function reiniciar_a;
+  final Function decrementarab;
+  final Function incrementarb;
+  final Function reiniciar_b;
+ 
   const CustomFloatingActionButton({
-    Key? key, required this.incrementar, required this.decrementar, required this.reiniciar,
+    Key? key, required this.multiplicar, required this.decrementara, required this.incrementara, required this.reiniciar_a, required this.decrementarab, required this.incrementarb, required this.reiniciar_b
   }) : super(key: key);
 
   @override
@@ -80,23 +132,47 @@ class CustomFloatingActionButton extends StatelessWidget {
            FloatingActionButton(
           backgroundColor: const Color.fromARGB(255, 255, 207, 31),
           foregroundColor: const Color.fromARGB(255, 34, 34, 36),
-          onPressed: () => decrementar(),
+          onPressed: () => multiplicar(),
+           child:const  Icon(Icons.close),
+          ),
+           FloatingActionButton(
+          backgroundColor: const Color.fromARGB(255, 255, 207, 31),
+          foregroundColor: const Color.fromARGB(255, 34, 34, 36),
+          onPressed: () => decrementara(),
            child:const  Icon(Icons.exposure_minus_1),
           ),
-         
+          FloatingActionButton(
+          backgroundColor: const Color.fromARGB(255, 255, 207, 31),
+          foregroundColor: const Color.fromARGB(255, 34, 34, 36),
+          onPressed: () => decrementarab(),
+           child:const  Icon(Icons.exposure_minus_1),
+          ),
+          
             FloatingActionButton(
           backgroundColor: const Color.fromARGB(255, 255, 207, 31),
           foregroundColor: const Color.fromARGB(255, 34, 34, 36),
-           onPressed: () => reiniciar(),
+           onPressed: () => reiniciar_a(),
            child:const  Icon(Icons.restart_alt),
           ),
-         
-        FloatingActionButton(
+          FloatingActionButton(
           backgroundColor: const Color.fromARGB(255, 255, 207, 31),
           foregroundColor: const Color.fromARGB(255, 34, 34, 36),
-          onPressed: ( ) => incrementar(),
+           onPressed: () => reiniciar_b(),
+           child:const  Icon(Icons.restart_alt),
+          ),
+            FloatingActionButton(
+          backgroundColor: const Color.fromARGB(255, 255, 207, 31),
+          foregroundColor: const Color.fromARGB(255, 34, 34, 36),
+          onPressed: ( ) => incrementara(),
            child:const  Icon(Icons.exposure_plus_1),
           ),
+          FloatingActionButton(
+          backgroundColor: const Color.fromARGB(255, 255, 207, 31),
+          foregroundColor: const Color.fromARGB(255, 34, 34, 36),
+          onPressed: ( ) => incrementarb(),
+           child:const  Icon(Icons.exposure_plus_1),
+          ),
+          
           
           
       ],
